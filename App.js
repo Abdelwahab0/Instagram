@@ -9,7 +9,9 @@ import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import LandingScreen from './components/auth/Landing';
 import MainScreen from './components/Main';
-import AddScreen from './components/main/add';
+import AddScreen from './components/main/Add';
+import SaveScreen from './components/main/Save';
+
 
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
@@ -21,7 +23,7 @@ const store = createStore(rootReducer, applyMiddleware(thunk));
 
 const Stack = createStackNavigator();
 
-export default function App() {
+export default function App({navigation}) {
   const [ loggedIn, setLoggedIn ] = useState(false);
   const [ loaded, setLoaded ] = useState(false);
 
@@ -62,7 +64,8 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Main">
           <Stack.Screen name="Main" component={MainScreen} options={{headerShown: false}}/>
-          <Stack.Screen name="Add" component={AddScreen}/>
+          <Stack.Screen name="Add" component={AddScreen} navigation={navigation}/>
+          <Stack.Screen name="Save" component={SaveScreen} navigation={navigation}/>
         </Stack.Navigator>
       </NavigationContainer>  
     </Provider>

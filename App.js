@@ -63,7 +63,7 @@ export default function App({navigation}) {
     <Provider store={store}>
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Main">
-          <Stack.Screen name="Main" component={MainScreen} options={{headerShown: false}}/>
+          <Stack.Screen name="Main" component={MainScreen} options={{headerShown: true}}/>
           <Stack.Screen name="Add" component={AddScreen} navigation={navigation}/>
           <Stack.Screen name="Save" component={SaveScreen} navigation={navigation}/>
         </Stack.Navigator>

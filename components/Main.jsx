@@ -8,6 +8,7 @@ import { bindActionCreators } from 'redux';
 import { fetchUser, fetchUserPosts } from '../redux/actions/index';
 
 import FeedScreen from './main/Feed';
+import SearchScreen from './main/Search';
 import ProfileScreen from './main/Profile';
 
 const Tab = createMaterialBottomTabNavigator();
@@ -16,7 +17,7 @@ const EmptyScreen = () => (
   null
 );
 
-function Main({ fetchUser, fetchUserPosts, currentUser }) {
+function Main({ fetchUser, fetchUserPosts, currentUser, navigation }) {
   useEffect(() => {
     fetchUser();
     fetchUserPosts();
@@ -28,6 +29,12 @@ function Main({ fetchUser, fetchUserPosts, currentUser }) {
         options={{
           tabBarIcon: ({ color, size }) => (
             <Icons name="home" color={color} size={26} />
+          ),
+        }} />
+        <Tab.Screen name="Search" component={SearchScreen} navigation={navigation}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Icons name="magnify" color={color} size={26} />
           ),
         }} />
       <Tab.Screen name="AddContainer" component={EmptyScreen}

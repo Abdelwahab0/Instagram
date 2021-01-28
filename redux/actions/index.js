@@ -9,7 +9,6 @@ export function fetchUser(){
     .get()
     .then((snapshot) => {
       if(snapshot.exists){
-        console.log(snapshot.data())
         dispatch({type: USER_STATE_CHANGE, currentUser: snapshot.data()});
       }
       else{
@@ -32,7 +31,6 @@ export function fetchUserPosts(){
         const id = doc.id;
         return{id, ...data}
       })
-      console.log(posts)
       dispatch({type: USER_POST_STATE_CHANGE, posts});
     })
   })
